@@ -81,8 +81,8 @@ const getById = async (req, res) => {
       res.json(matchActivity);
     }
   } catch (error) {
-    // res.status(404).json({ msg: "Id not Found" });
-    console.log(error);
+    res.status(404).json({ msg: "Id not Found" });
+    // console.log(error);.
   }
 };
 

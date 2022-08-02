@@ -32,10 +32,20 @@ const CountryDetails = () => {
             <h1>Activities</h1>
             {e.activities.length ? (
               <>
-                <h5>Name: {e.activities.map((e) => e.name)}</h5>
+                {/* <h5>Name: {e.activities.map((e) => e.name)}</h5>
                 <h5>Difficulty: {e?.activities.map((e) => e.difficulty)}</h5>
                 <h5>Duration: {e?.activities.map((e) => e.duration)}</h5>
-                <h5>Season: {e?.activities.map((e) => e.season)}</h5>
+                <h5>Season: {e?.activities.map((e) => e.season)}</h5> */}
+                {e.activities.map(e => {
+                  return (
+                    <div key={e.id}>
+                    <h5>Name: {e.name}</h5>
+                    <h5>difficulty: {e.difficulty}</h5>
+                    <h5>duration: {e.duration}</h5>
+                    <h5>season: {e.season}</h5>
+                    </div>
+                  )
+                })}
               </>
             ) : null}
           </div>
@@ -47,24 +57,4 @@ const CountryDetails = () => {
 
 export default CountryDetails;
 
-{
-  /* <h1>{countryDetails.name}</h1>
-<h5>{countryDetails.continent}</h5>
-<h5>{countryDetails.capital}</h5>
-<h5>{countryDetails.subRegion}</h5>
-<h5>{countryDetails.area}</h5>
-<h5>{countryDetails.population}</h5>
-<img src={countryDetails.image} alt="img" />
-<h1>Activity</h1>
-<h3>{countryDetails.activities.map((e) => e.name)}</h3> */
-}
 
-// ----------------------- OPCIONAL --------------------
-// {e.activities.length && (
-//   <>
-//     <h5>Name: {e.activities.map((e) => e.name)}</h5>
-//     <h5>Difficulty: {e?.activities.map((e) => e.difficulty)}</h5>
-//     <h5>Duration: {e?.activities.map((e) => e.duration)}</h5>
-//     <h5>Season: {e?.activities.map((e) => e.season)}</h5>
-//   </>
-// )}

@@ -41,7 +41,7 @@ router.post("/", async (req, res) => {
     });
     res.send(newActivity);
   } catch (error) {
-    res.send(error.message);
+    res.json({err: 'the activity was already created'});
   }
 });
 
