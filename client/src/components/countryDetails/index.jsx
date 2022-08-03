@@ -26,25 +26,21 @@ const CountryDetails = () => {
             <h5>Continent: {e.continent}</h5>
             <h5>Capital: {e.capital}</h5>
             <h5>SubRegion: {e.subRegion}</h5>
-            <h5>Area: {e.area}</h5>
+            <h5>Area: {e.area} km2</h5>
             <h5>Population: {e.population}</h5>
             <img src={e.image} alt="img" />
             <h1>Activities</h1>
             {e.activities.length ? (
               <>
-                {/* <h5>Name: {e.activities.map((e) => e.name)}</h5>
-                <h5>Difficulty: {e?.activities.map((e) => e.difficulty)}</h5>
-                <h5>Duration: {e?.activities.map((e) => e.duration)}</h5>
-                <h5>Season: {e?.activities.map((e) => e.season)}</h5> */}
-                {e.activities.map(e => {
+                {e.activities.map((e) => {
                   return (
                     <div key={e.id}>
-                    <h5>Name: {e.name}</h5>
-                    <h5>difficulty: {e.difficulty}</h5>
-                    <h5>duration: {e.duration}</h5>
-                    <h5>season: {e.season}</h5>
+                      <h5>Name: {e.name}</h5>
+                      <h5>difficulty: {e.difficulty}</h5>
+                      <h5>duration: {e.duration}</h5>
+                      <h5>season: {e.season}</h5>
                     </div>
-                  )
+                  );
                 })}
               </>
             ) : null}
@@ -56,5 +52,3 @@ const CountryDetails = () => {
 };
 
 export default CountryDetails;
-
-

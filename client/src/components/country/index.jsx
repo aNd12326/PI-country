@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCountries } from "../../store/actions";
+import { clearPage, getCountries } from "../../store/actions";
 import CountryCard from "../countryCard";
 
 const Country = () => {
@@ -10,6 +10,10 @@ const Country = () => {
 
   useEffect(() => {
     dispatch(getCountries());
+    return () => {
+      //todo lo que suceda dentro del return es cuando se desmonta el componente
+      dispatch(clearPage());
+    };
   }, [dispatch]);
   console.log(countries);
 
