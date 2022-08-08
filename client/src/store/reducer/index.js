@@ -3,6 +3,7 @@ import {
   GET_DETAILS_COUNTRY,
   SEARCH_COUNTRY_NAME,
   CLEAR_PAGE,
+  POST_ACTIVITY,
 } from "../actions";
 
 const initialState = {
@@ -24,6 +25,10 @@ export default function reducer(state = initialState, { type, payload }) {
         details: payload,
       };
     case SEARCH_COUNTRY_NAME:
+      // if (payload.error) {
+      //   alert(payload.error);
+      //   return state;
+      // }
       return {
         ...state,
         countries: payload,
@@ -32,6 +37,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         countries: [],
+        details: [],
+      };
+    case POST_ACTIVITY:
+      return {
+        ...state,
       };
     default:
       return state;

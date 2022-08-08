@@ -54,9 +54,10 @@ const getAll = async (req, res) => {
     } else {
       getCountry = await Country.findAll();
     }
+    // res.status(201).json(getCountry);
     // --------- Verificacion si no existe ningin pais----------
     if (getCountry.length) {
-      res.send(getCountry);
+      res.status(201).json(getCountry);
     } else {
       res.status(404).json({ err: "We could´nt find the country" });
     }
@@ -78,7 +79,7 @@ const getById = async (req, res) => {
         },
         attributes: { exclude: ["createdAt", "updatedAt"] },
       });
-      res.json(matchActivity);
+      res.status(201).json(matchActivity);
     }
   } catch (error) {
     res.status(404).json({ msg: "Id not Found" });

@@ -3,6 +3,7 @@ export const GET_COUNTRIES = "GET_COUNTRIES";
 export const GET_DETAILS_COUNTRY = "GET_DETAILS_COUNTRY";
 export const SEARCH_COUNTRY_NAME = "SEARCH_COUNTRY_NAME";
 export const CLEAR_PAGE = "CLEAR_PAGE";
+export const POST_ACTIVITY = "POST_ACTIVITY";
 
 export function getCountries() {
   return function (dispatch) {
@@ -47,6 +48,17 @@ export function getNameCountry(name) {
         });
       })
       .catch((err) => console.log(err));
+    // .catch((err) => alert(err.response.data.err));
+  };
+}
+
+export function postActivity(payload) {
+  return async function () {
+    const response = await axios.post(
+      `http://localhost:3001/api/activities`,
+      payload
+    );
+    return response;
   };
 }
 

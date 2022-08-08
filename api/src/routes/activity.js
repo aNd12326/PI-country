@@ -22,7 +22,8 @@ const router = Router();
 // });
 
 router.post("/", async (req, res) => {
-  const { name, difficulty, duration, season, idCountry } = req.body;
+  const { name, difficulty, duration, season, idCountry, createdInDb } =
+    req.body;
   if (!name || !difficulty || !duration || !season)
     res.status(500).json({ msg: "Error, faltan enviar datos" });
 
@@ -32,6 +33,7 @@ router.post("/", async (req, res) => {
       difficulty: difficulty,
       duration: duration,
       season: season,
+      createdInDb,
     });
 
     const aidis = idCountry.map((e) => e.toUpperCase());
@@ -39,10 +41,15 @@ router.post("/", async (req, res) => {
     aidis.map(async (e) => {
       await newActivity.addCountry(await Country.findByPk(e));
     });
-    res.send(newActivity);
+    res.status(201).json(newActivity);
   } catch (error) {
-    res.json({err: 'the activity was already created'});
+    res.json({ err: "the activity was already created" });
   }
+});
+
+router.get("", async (req, res) => {
+  const getAct = await Activity.findAll();
+  res.json(getAct);
 });
 
 module.exports = router;
