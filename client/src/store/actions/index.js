@@ -4,6 +4,8 @@ export const GET_DETAILS_COUNTRY = "GET_DETAILS_COUNTRY";
 export const SEARCH_COUNTRY_NAME = "SEARCH_COUNTRY_NAME";
 export const CLEAR_PAGE = "CLEAR_PAGE";
 export const POST_ACTIVITY = "POST_ACTIVITY";
+export const SORT_COUNTRY = "SORT_COUNTRY";
+export const SORT_BY_CONTINENT = "SORT_BY_CONTINENT";
 
 export function getCountries() {
   return function (dispatch) {
@@ -65,5 +67,20 @@ export function postActivity(payload) {
 export function clearPage() {
   return {
     type: CLEAR_PAGE,
+  };
+}
+
+// ------------- Filtraciones -----------------
+export function sortCountries(order) {
+  return {
+    type: SORT_COUNTRY,
+    payload: order,
+  };
+}
+
+export function sortByContinent(order) {
+  return {
+    type: SORT_BY_CONTINENT,
+    payload: order,
   };
 }

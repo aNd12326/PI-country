@@ -32,6 +32,7 @@ const getCountriesFromApi = async () => {
           population: e.population,
         },
       });
+      // console.log([e.continent])
     });
     return details;
   } catch (error) {
