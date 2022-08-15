@@ -1,4 +1,3 @@
-import { ASCENDENTE, DESCENDENTE, POPULATION_ASC, POPULATION_DESC } from "../../components/costantes/sort";
 import {
   GET_COUNTRIES,
   GET_DETAILS_COUNTRY,
@@ -7,12 +6,15 @@ import {
   POST_ACTIVITY,
   SORT_COUNTRY,
   SORT_BY_CONTINENT,
+  FILTER_ACTIVITY,
+  GET_ACTIVITIES,
 } from "../actions";
 
 const initialState = {
   countries: [],
   details: [],
   copiaCountries: [],
+  getActvities: [],
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -21,7 +23,7 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         countries: payload,
-        copiaCountries: payload
+        copiaCountries: payload,
       };
     case GET_DETAILS_COUNTRY:
       return {
@@ -35,51 +37,50 @@ export default function reducer(state = initialState, { type, payload }) {
       // }
       return {
         ...state,
-        copiaCountries: payload,
+        countries: payload,
       };
     case CLEAR_PAGE:
       return {
         ...state,
         countries: [],
         details: [],
-        copiaCountries: []
+        copiaCountries: [],
       };
     case POST_ACTIVITY:
       return {
         ...state,
       };
     case SORT_BY_CONTINENT:
-      let allCountries = [...state.copiaCountries]
-      let filtered;
-      if (payload === 'NorthAmerica') {
-        filtered = allCountries.filter(e => e.continent === 'North America')
-      } else if (payload === 'Asia') {
-        filtered = allCountries.filter(e => e.continent === 'Asia')
-      } else if (payload === 'Oceania') {
-        filtered = allCountries.filter(e => e.continent === 'Oceania')
-      } else if (payload === 'Europe') {
-        filtered = allCountries.filter(e => e.continent === 'Europe')
-      } else if (payload === 'Antarctica') {
-        filtered = allCountries.filter(e => e.continent === 'Antarctica')
-      } else if (payload === 'Africa') {
-        filtered = allCountries.filter(e => e.continent === 'Africa')
-      } else if (payload === 'SouthAmerica') {
-        filtered = allCountries.filter(e => e.continent === 'South America')
-      }
+      let filtered =
+        payload === "reset"
+          ? state.copiaCountries
+          : state.copiaCountries.filter((e) => e.continent === payload);
       return {
         ...state,
-        copiaCountries: payload === 'reset' ? state.countries : filtered
+        countries: filtered,
+      };
+    case GET_ACTIVITIES:
+      return {
+        ...state,
+        getActvities: payload,
+      };
+    case FILTER_ACTIVITY:
+      let filterAct =
+        payload === "reset"
+          ? state.copiaCountries
+          : state.copiaCountries.filter(
+              (e) =>
+                e.activities &&
+                e.activities.filter((ac) => ac.name === payload).length
+            );
+      return {
+        ...state,
+        countries: filterAct,
       };
     case SORT_COUNTRY:
-      let sortedArr = [...state.copiaCountries];
+      let sortedArr = [...state.countries];
       sortedArr = sortedArr.sort((a, b) => {
-        // if (a.name < b.name) {
-        //   return payload === ASCENDENTE ? -1 : 1;
-        // }
-        // if (a.name > b.name) {
-        //   return payload === DESCENDENTE ? -1 : 1;
-        // }
-        if (payload === 'ascendente') {
+        if (payload === "ascendente") {
           if (a.name > b.name) {
             return 1;
           }
@@ -87,7 +88,7 @@ export default function reducer(state = initialState, { type, payload }) {
             return -1;
           }
         }
-        if (payload === 'descendente') {
+        if (payload === "descendente") {
           if (a.name > b.name) {
             return -1;
           }
@@ -95,17 +96,17 @@ export default function reducer(state = initialState, { type, payload }) {
             return 1;
           }
         }
-        if (payload === 'populationAsc') {
-          return a.population - b.population
+        if (payload === "populationAsc") {
+          return a.population - b.population;
         }
-        if (payload === 'populationDesc') {
-          return b.population - a.population
+        if (payload === "populationDesc") {
+          return b.population - a.population;
         }
-        return 0
+        return 0;
       });
       return {
         ...state,
-        copiaCountries: payload === 'reset' ? state.countries : sortedArr
+        countries: payload === "reset" ? state.copiaCountries : sortedArr,
       };
     default:
       return state;

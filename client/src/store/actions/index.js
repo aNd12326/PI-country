@@ -6,6 +6,8 @@ export const CLEAR_PAGE = "CLEAR_PAGE";
 export const POST_ACTIVITY = "POST_ACTIVITY";
 export const SORT_COUNTRY = "SORT_COUNTRY";
 export const SORT_BY_CONTINENT = "SORT_BY_CONTINENT";
+export const FILTER_ACTIVITY = "FILTER_ACTIVITY";
+export const GET_ACTIVITIES = "GET_ACTIVITIES";
 
 export function getCountries() {
   return function (dispatch) {
@@ -82,5 +84,28 @@ export function sortByContinent(order) {
   return {
     type: SORT_BY_CONTINENT,
     payload: order,
+  };
+}
+
+export function getActivities() {
+  return function (dispatch) {
+    axios
+      .get("http://localhost:3001/api/activities")
+      .then((activities) => {
+        dispatch({
+          type: GET_ACTIVITIES,
+          payload: activities.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+}
+
+export function filterActivities(activity) {
+  return {
+    type: FILTER_ACTIVITY,
+    payload: activity,
   };
 }

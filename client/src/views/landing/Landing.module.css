@@ -1,0 +1,16 @@
+.containerLanding {
+  display: flex;
+  height: 100vh;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.btnLanding {
+  cursor: pointer;
+  padding: 100px 140px;
+  border-radius: 50%;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: aqua;
+}

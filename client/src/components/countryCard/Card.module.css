@@ -1,0 +1,40 @@
+.container {
+  width: 400px;
+  padding-top: 20px;
+  margin: auto;
+  overflow: hidden;
+  /* flex-grow: 1; */
+}
+.container:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.country {
+  background-color: rgb(17, 145, 145);
+  align-content: center;
+  border: 2px solid grey;
+  border-radius: 6px;
+  overflow: hidden; /* para que el borde de las imagenes no se salgan del contenedor */
+  margin-bottom: 10px;
+  margin-right: 10px;
+  transition: 0.3s;
+  padding: 20px;
+}
+
+.country:hover {
+  background-color: rgb(6, 91, 117);
+}
+
+.name {
+  font-size: 25px;
+  color: rgba(255, 255, 255, 0.968) !important;
+  padding-bottom: 10px;
+}
+
+.continent {
+  padding-bottom: 10px;
+  color: wheat;
+  font-weight: bold;
+  font-size: 19px;
+}

@@ -1,0 +1,139 @@
+/* .formContainer {
+  margin-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: aqua;
+  padding: 100px;
+} */
+
+.titleForm {
+  padding: 30px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  width: 40%;
+  text-decoration: overline;
+}
+
+.labelTxt {
+  color: rgb(232, 227, 217);
+  font-weight: bold;
+}
+
+.labelTxtCountries {
+  color: rgb(232, 227, 217);
+  font-weight: bold;
+}
+
+.containerForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.cssForm {
+  /* padding-right: 60px; */
+  /* width: 1000px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  border-radius: 10px;
+  background-color: rgb(50, 102, 102);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  width: 800px;
+}
+
+.formGroup label {
+  flex: none;
+  display: block;
+  width: 125px;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.inputControl {
+  width: 400px;
+  display: block;
+  margin-bottom: 10px;
+  margin-right: 8px;
+  padding: 4px;
+  margin-top: -4px;
+}
+/* 
+.selects {
+  width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+} */
+.select {
+  margin-bottom: 10px;
+  width: 400px;
+  border: 1px solid var(--select-border);
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1.1;
+  background-color: #fff;
+  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+}
+
+.select::-ms-expand {
+  display: none;
+}
+
+.errorsColor {
+  color: red;
+}
+
+.smallTxt {
+  color: rgb(97, 248, 243);
+  font-weight: bold;
+  padding: 10px;
+}
+
+.btnForm {
+  padding-top: 200px;
+  padding: 20px;
+  font-weight: bold;
+  width: 30%;
+  margin: auto;
+  margin-right: 340px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 20px;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.btnColorAct {
+  background-color: burlywood;
+}
+
+.btnForm:hover {
+  cursor: pointer;
+  background-color: burlywood;
+}
+
+.countriesForm {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  width: 20%;
+  text-align: left;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
+}

@@ -1,6 +1,9 @@
 ### GET COUNTRY
 GET http://localhost:3001/api/countries
 
+### GET ACTIVITIES
+GET http://localhost:3001/api/activities
+
 ### GET COUNTRY BY QUERY
 GET http://localhost:3001/api/countries?name=pEr
 

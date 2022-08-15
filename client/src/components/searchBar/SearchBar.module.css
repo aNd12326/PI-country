@@ -1,0 +1,24 @@
+.inputSearchBar {
+  font-size: 20px;
+  font-family: inherit;
+  padding: 0.25em 0.5em;
+  background-color: #fff;
+  border: 2px solid var(--input-border);
+  border-radius: 4px;
+}
+
+.btnSearch {
+  border: none;
+  background: #ea1538;
+  padding: 12px 30px;
+  border-radius: 30px;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.btnSearch:hover {
+  transform: scale(1.3);
+  cursor: pointer;
+}

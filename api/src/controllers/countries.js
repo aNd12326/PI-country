@@ -53,7 +53,11 @@ const getAll = async (req, res) => {
         },
       });
     } else {
-      getCountry = await Country.findAll();
+      getCountry = await Country.findAll({
+        include: {
+          model: Activity,
+        },
+      });
     }
     // res.status(201).json(getCountry);
     // --------- Verificacion si no existe ningin pais----------
