@@ -14,19 +14,17 @@ const Country = () => {
   const countriesForFirstPage = 9;
   const countriesForTheRestPage = 10;
   // -------------- PAGINADO ----------------
+  const [currentPage, setCurrentPage] = useState(1);
   const [indexOfLastCountry, setIndexOfLastCountry] = useState(
     countriesForFirstPage
   );
   const [indexOfFirstCountry, setIndexOfFirstCountry] = useState(0);
-  // const currentCountry = countries.slice(
-  //   indexOfFirstCountry,
-  //   indexOfLastCountry
-  // );
 
   const [currentCountry, setCurrentCountry] = useState([]);
 
   // console.log(currentCountry);
   const paginado = (pageNumber) => {
+    setCurrentPage(pageNumber);
     const initialIndex =
       pageNumber === 1 ? 0 : countriesForTheRestPage * (pageNumber - 1) - 1;
     const finalIndex =
@@ -57,6 +55,7 @@ const Country = () => {
         countries={countries.length}
         paginado={paginado}
         countriesForFirstPage={countriesForFirstPage}
+        currentPage={currentPage}
       />
       {currentCountry.length ? (
         <div className={countryCss.cardGrid}>

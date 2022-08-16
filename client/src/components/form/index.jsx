@@ -121,6 +121,7 @@ const Form = () => {
             value={input.name}
             onChange={handleChange}
             className={form.inputControl}
+            placeholder="Type a Name"
           />
           {erroresFormulario.name ? (
             <h4 className={form.errorsColor}>{erroresFormulario.name}</h4>
@@ -161,6 +162,7 @@ const Form = () => {
             value={input.duration}
             onChange={handleChange}
             className={form.inputControl}
+            placeholder="type a number"
           />
           {erroresFormulario.duration ? (
             <h4 className={form.errorsColor}>{erroresFormulario.duration}</h4>

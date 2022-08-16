@@ -3,6 +3,7 @@ export default function Paginado({
   countries,
   paginado,
   countriesForFirstPage = 9,
+  currentPage,
 }) {
   const pageNumbers = [];
   for (
@@ -21,7 +22,11 @@ export default function Paginado({
         {pageNumbers &&
           pageNumbers.map((number) => {
             return (
-              <li onClick={() => paginado(number)} key={number}>
+              <li
+                className={currentPage === number ? "active" : null}
+                onClick={() => paginado(number)}
+                key={number}
+              >
                 {number}
               </li>
             );

@@ -12,7 +12,7 @@ export const GET_ACTIVITIES = "GET_ACTIVITIES";
 export function getCountries() {
   return function (dispatch) {
     axios
-      .get("/countries")
+      .get("/api/countries")
       .then((country) => {
         dispatch({
           type: GET_COUNTRIES,
@@ -28,7 +28,7 @@ export function getCountries() {
 export function getDetailsCountry(id) {
   return function (dispatch) {
     axios
-      .get(`/countries/${id}`)
+      .get(`/api/countries/${id}`)
       .then((detail) => {
         dispatch({
           type: GET_DETAILS_COUNTRY,
@@ -44,7 +44,7 @@ export function getDetailsCountry(id) {
 export function getNameCountry(name) {
   return function (dispatch) {
     axios
-      .get(`/countries?name=${name}`)
+      .get(`/api/countries?name=${name}`)
       .then((resp) => {
         dispatch({
           type: SEARCH_COUNTRY_NAME,
@@ -59,7 +59,7 @@ export function getNameCountry(name) {
 export function postActivity(payload) {
   return async function () {
     const response = await axios.post(
-      `/activities`,
+      `/api/activities`,
       payload
     );
     return response;
@@ -90,7 +90,7 @@ export function sortByContinent(order) {
 export function getActivities() {
   return function (dispatch) {
     axios
-      .get("http://localhost:3001/api/activities")
+      .get("/api/activities")
       .then((activities) => {
         dispatch({
           type: GET_ACTIVITIES,

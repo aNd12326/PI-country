@@ -1,23 +1,6 @@
 const axios = require("axios");
 const { Country, Activity } = require("../db");
 
-// router.post("/", (req, res) => {
-//   const { name, difficulty, duration, season } = req.body;
-//   if (!name || !difficulty || !duration || !season)
-//     res.status(500).json({ msg: "Error, faltan enviar datos" });
-
-//   const newActivity = Activity.create({
-//     name: String(name),
-//     difficulty: Number(difficulty),
-//     duration: Number(difficulty),
-//     season: String(season),
-//   });
-
-//   Promise.all([newActivity])
-//     .then((resp) => res.json(resp))
-//     .catch(() => res.status(404).json({ err: "La actividad ya existe !!!!" }));
-// });
-
 const postActivities = async (req, res) => {
   const { name, difficulty, duration, season, idCountry, createdInDb } =
     req.body;
