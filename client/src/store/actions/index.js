@@ -12,7 +12,7 @@ export const GET_ACTIVITIES = "GET_ACTIVITIES";
 export function getCountries() {
   return function (dispatch) {
     axios
-      .get("http://localhost:3001/api/countries")
+      .get("/countries")
       .then((country) => {
         dispatch({
           type: GET_COUNTRIES,
@@ -28,7 +28,7 @@ export function getCountries() {
 export function getDetailsCountry(id) {
   return function (dispatch) {
     axios
-      .get(`http://localhost:3001/api/countries/${id}`)
+      .get(`/countries/${id}`)
       .then((detail) => {
         dispatch({
           type: GET_DETAILS_COUNTRY,
@@ -44,22 +44,22 @@ export function getDetailsCountry(id) {
 export function getNameCountry(name) {
   return function (dispatch) {
     axios
-      .get(`http://localhost:3001/api/countries?name=${name}`)
+      .get(`/countries?name=${name}`)
       .then((resp) => {
         dispatch({
           type: SEARCH_COUNTRY_NAME,
           payload: resp.data,
         });
       })
-      .catch((err) => console.log(err));
-    // .catch((err) => alert(err.response.data.err));
+      // .catch((err) => console.log(err));
+      .catch((err) => alert(err.response.data.err));
   };
 }
 
 export function postActivity(payload) {
   return async function () {
     const response = await axios.post(
-      `http://localhost:3001/api/activities`,
+      `/activities`,
       payload
     );
     return response;

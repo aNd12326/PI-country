@@ -31,10 +31,6 @@ export default function reducer(state = initialState, { type, payload }) {
         details: payload,
       };
     case SEARCH_COUNTRY_NAME:
-      // if (payload.error) {
-      //   alert(payload.error);
-      //   return state;
-      // }
       return {
         ...state,
         countries: payload,
@@ -69,10 +65,10 @@ export default function reducer(state = initialState, { type, payload }) {
         payload === "reset"
           ? state.copiaCountries
           : state.copiaCountries.filter(
-              (e) =>
-                e.activities &&
-                e.activities.filter((ac) => ac.name === payload).length
-            );
+            (e) =>
+              e.activities &&
+              e.activities.filter((ac) => ac.name === payload).length
+          );
       return {
         ...state,
         countries: filterAct,
