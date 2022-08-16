@@ -48,3 +48,15 @@ code {
   background-color: white;
   color: black;
 }
+
+.loadingCss{
+  background-color: aqua;
+  border-radius: 80px;
+  display: flex;
+  height: 30vh;
+  width: 30%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
