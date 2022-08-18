@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Error from "../../error";
-import { clearPage, getCountries } from "../../store/actions";
+import { getCountries } from "../../store/actions";
 import CountryCard from "../countryCard";
 import countryCss from "./Country.module.css";
 // importo Paginado
 import Paginado from "../Paginado";
+import Filters from "../filters";
 
 const Country = () => {
   const countries = useSelector((state) => state.countries);
@@ -43,13 +44,13 @@ const Country = () => {
 
   useEffect(() => {
     dispatch(getCountries());
-    return () => {
-      //todo lo que suceda dentro del return es cuando se desmonta el componente
-      dispatch(clearPage());
-    };
   }, [dispatch]);
   return (
     <div>
+      <Filters
+        setCurrentPage={setCurrentPage}
+        setIndexOfFirstCountry={setIndexOfFirstCountry}
+      />
       <Paginado
         countriesForTheRestPage={countriesForTheRestPage}
         countries={countries.length}

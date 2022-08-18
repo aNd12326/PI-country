@@ -8,6 +8,8 @@ export const SORT_COUNTRY = "SORT_COUNTRY";
 export const SORT_BY_CONTINENT = "SORT_BY_CONTINENT";
 export const FILTER_ACTIVITY = "FILTER_ACTIVITY";
 export const GET_ACTIVITIES = "GET_ACTIVITIES";
+export const FILTER_AREA = "FILTER_AREA";
+export const RESET_ALL_FILTERS = "RESET_ALL_FILTERS";
 
 export function getCountries() {
   return function (dispatch) {
@@ -51,8 +53,7 @@ export function getNameCountry(name) {
           payload: resp.data,
         });
       })
-      // .catch((err) => console.log(err));
-      .catch((err) => alert(err.response.data.err));
+      .catch((err) => console.log(err));
   };
 }
 
@@ -107,5 +108,19 @@ export function filterActivities(activity) {
   return {
     type: FILTER_ACTIVITY,
     payload: activity,
+  };
+}
+
+export function filterArea(payload) {
+  return {
+    type: FILTER_AREA,
+    payload
+  };
+}
+
+export function resetAllFilters(payload) {
+  return {
+    type: RESET_ALL_FILTERS,
+    payload
   };
 }

@@ -8,6 +8,8 @@ import {
   SORT_BY_CONTINENT,
   FILTER_ACTIVITY,
   GET_ACTIVITIES,
+  FILTER_AREA,
+  RESET_ALL_FILTERS,
 } from "../actions";
 
 const initialState = {
@@ -73,6 +75,21 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         countries: filterAct,
       };
+
+    case FILTER_AREA:
+      let filterArea = state.copiaCountries.filter(e => e.area > 20000)
+
+      return {
+        ...state,
+        countries: filterArea
+      }
+
+    case RESET_ALL_FILTERS:
+      return {
+        ...state,
+        countries: [...state.copiaCountries]
+      }
+
     case SORT_COUNTRY:
       let sortedArr = [...state.countries];
       sortedArr = sortedArr.sort((a, b) => {

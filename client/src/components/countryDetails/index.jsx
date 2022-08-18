@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { clearPage, getDetailsCountry } from "../../store/actions";
+import { getDetailsCountry } from "../../store/actions";
 import Navbar from "../navbar";
 import detailsCss from "./Details.module.css";
 
@@ -12,11 +12,6 @@ const CountryDetails = () => {
 
   useEffect(() => {
     dispatch(getDetailsCountry(id));
-    //   si estamos seteando esto en redux, deberiamos limpiarlo aca con el return
-    return () => {
-      //todo lo que suceda dentro del return es cuando se desmonta el componente
-      dispatch(clearPage());
-    };
   }, [dispatch, id]);
   console.log(countryDetails);
 
@@ -39,14 +34,14 @@ const CountryDetails = () => {
               <h3>Continent: </h3>
               <h3>{e.continent}</h3>
             </div>
-            <div className={detailsCss.capitalContainer}>
+            <>
               {e.capital === "NaN" ? null : (
-                <>
+                <div className={detailsCss.capitalContainer}>
                   <h3>Capital: </h3>
                   <h3>{e.capital}</h3>
-                </>
+                </div>
               )}
-            </div>
+            </>
             <>
               {e.subRegion === "NaN" ? null : (
                 <div className={detailsCss.subRegionContainer}>

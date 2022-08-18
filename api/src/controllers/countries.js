@@ -92,4 +92,14 @@ const getById = async (req, res) => {
   }
 };
 
-module.exports = { getCountriesFromApi, getAll, getById };
+const createCountry = async (req, res) => {
+  const { name, image, continent, capital, subRegion, area, population } = req.body
+
+  const country = await Country.create(req.body)
+
+  res.json(country)
+
+};
+
+
+module.exports = { getCountriesFromApi, getAll, getById, createCountry };

@@ -1,6 +1,6 @@
 .containerLanding {
   display: flex;
-  height: 100vh;
+  height: 70vh;
 
   justify-content: center;
   align-items: center;
@@ -13,4 +13,10 @@
   font-size: 30px;
   font-weight: bold;
   background-color: aqua;
+  transition: .3s ease-out;
+}
+
+.btnLanding:hover{
+  background-color: rgb(35, 84, 84);
+  color: white;
 }
