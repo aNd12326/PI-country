@@ -110,140 +110,171 @@ const Form = () => {
   }
 
   return (
-    <div className={form.containerForm}>
-      <h1 className={form.titleForm}>Create Activity</h1>
-      <form className={form.cssForm} onSubmit={handleOnSubmit}>
-        <div className={form.formGroup}>
-          <label className={form.labelTxt}>Name: </label>
-          <input
-            type="text"
-            name="name"
-            value={input.name}
-            onChange={handleChange}
-            className={form.inputControl}
-            placeholder="Type a Name"
-          />
-          {erroresFormulario.name ? (
-            <h4 className={form.errorsColor}>{erroresFormulario.name}</h4>
-          ) : (
-            false
-          )}
+    <div className="container p-4">
+      <div className="row">
+        <div className="card-header bg-dark text-white text-center p-2">
+          <h3>Create Activity</h3>
         </div>
-        {/* ---------------------- */}
-        <div className={form.formGroup}>
-          <label className={form.labelTxt}>Difficulty: </label>
-          <select
-            name="difficulty"
-            onChange={handleChange}
-            className={form.select}
-            defaultValue="dft"
-          >
-            <option value="dft" disabled={true}>
-              Select Number 1 to 5
-            </option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-          {erroresFormulario.difficulty ? (
-            <h4 className={form.errorsColor}>{erroresFormulario.difficulty}</h4>
-          ) : (
-            false
-          )}
-        </div>
-        {/* ---------------------- */}
-        <div className={form.formGroup}>
-          <label className={form.labelTxt}>Duration: </label>
-          <input
-            type="number"
-            name="duration"
-            value={input.duration}
-            onChange={handleChange}
-            className={form.inputControl}
-            placeholder="type a number"
-          />
-          {erroresFormulario.duration ? (
-            <h4 className={form.errorsColor}>{erroresFormulario.duration}</h4>
-          ) : (
-            false
-          )}
-        </div>
-        {/* ---------------------- */}
-        <div className={form.formGroup}>
-          <label className={form.labelTxt}>Season: </label>
-          <select
-            className={form.select}
-            name="season"
-            // value={input.season}
-            onChange={handleChange}
-            defaultValue="default"
-          >
-            <option value="default" disabled={true}>
-              Select one Season
-            </option>
-            <option value="Verano">Verano</option>
-            <option value="Otoño">Otoño</option>
-            <option value="Invierno">Invierno</option>
-            <option value="Primavera">Primavera</option>
-          </select>
-          {erroresFormulario.season ? (
-            <h4 className={form.errorsColor}>{erroresFormulario.season}</h4>
-          ) : (
-            false
-          )}
-        </div>
-        {/* ---------------------- */}
-        <div className={form.formGroup}>
-          <label className={form.labelTxt}>Country</label>
-          <select
-            defaultValue="Countries"
-            name="idCountry"
-            // value={input.idCountry}
-            onChange={(e) => handleSelect(e)}
-            className={form.select}
-          >
-            <option value="Countries" disabled={true}>
-              Select a Country
-            </option>
-            {countries.map((e) => {
-              return (
-                <option value={e.id} key={e.id}>
-                  {e.name}
-                </option>
-              );
-            })}
-          </select>
-          {input.idCountry.length === 0 ? (
-            <h4 className={form.errorsColor}>{erroresFormulario.idCountry}</h4>
-          ) : (
-            false
-          )}
-        </div>
-        {/* ---------------------- */}
-        <div className={form.formGroup}>
-          <button
-            disabled={
-              Object.keys(erroresFormulario).length === 0
-                ? false
-                : true && form.btnColorAct
-            }
-            className={form.btnForm}
-          >
-            Send
-          </button>
-        </div>
-      </form>
-      <div className={form.countriesForm}>
-        {input.idCountry.length > 0 ? (
-          <>
-            <h1 className={form.labelTxtCountries}>Selected Countries: </h1>
-            <div className={form.smallTxt}>
-              <h4> {input?.idCountry.map((e) => e + " ,")}</h4>
+        <div className="card-body d-flex justify-content-center bg-white">
+          <form onSubmit={handleOnSubmit} className="p-3">
+            <div className="mb-3 row">
+              <label className="col-sm-2 col-form-label text-center ">
+                Name:{" "}
+              </label>
+              <div className="col-sm-10">
+                <input
+                  type="text"
+                  name="name"
+                  value={input.name}
+                  onChange={handleChange}
+                  placeholder="Type a Name"
+                  className="form-control"
+                />
+              </div>
+              {erroresFormulario.name ? (
+                <h4 className={form.errorsColor}>{erroresFormulario.name}</h4>
+              ) : (
+                false
+              )}
             </div>
-          </>
-        ) : null}
+            {/* ---------------------- */}
+            <div className="mb-3 row">
+              <label className="col-sm-2 col-form-label text-center">
+                Difficulty:
+              </label>
+              <div className="col-sm-10">
+                <select
+                  className="form-control"
+                  name="difficulty"
+                  onChange={handleChange}
+                  defaultValue="dft"
+                >
+                  <option value="dft" disabled={true}>
+                    Select Number 1 to 5
+                  </option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              {erroresFormulario.difficulty ? (
+                <h4 className={form.errorsColor}>
+                  {erroresFormulario.difficulty}
+                </h4>
+              ) : (
+                false
+              )}
+            </div>
+            {/* ---------------------- */}
+            <div className="mb-3 row">
+              <label className="col-sm-2 col-form-label text-center">
+                Duration:
+              </label>
+              <div className="col-sm-10">
+                <input
+                  type="number"
+                  name="duration"
+                  value={input.duration}
+                  onChange={handleChange}
+                  placeholder="type a number"
+                  className="form-control"
+                />
+              </div>
+              {erroresFormulario.duration ? (
+                <h4 className={form.errorsColor}>
+                  {erroresFormulario.duration}
+                </h4>
+              ) : (
+                false
+              )}
+            </div>
+            {/* ---------------------- */}
+            <div className="mb-3 row">
+              <label className="col-sm-2 col-form-label text-center">
+                Season:{" "}
+              </label>
+              <div className="col-sm-10">
+                <select
+                  name="season"
+                  onChange={handleChange}
+                  defaultValue="default"
+                  className="form-control"
+                >
+                  <option value="default" disabled={true}>
+                    Select one Season
+                  </option>
+                  <option value="Verano">Verano</option>
+                  <option value="Otoño">Otoño</option>
+                  <option value="Invierno">Invierno</option>
+                  <option value="Primavera">Primavera</option>
+                </select>
+              </div>
+
+              {erroresFormulario.season ? (
+                <h4 className={form.errorsColor}>{erroresFormulario.season}</h4>
+              ) : (
+                false
+              )}
+            </div>
+            {/* ---------------------- */}
+            <div className="mb-3 row">
+              <label className="col-sm-2 col-form-label text-center">
+                Country
+              </label>
+              <div className="col-sm-10">
+                <select
+                  defaultValue="Countries"
+                  name="idCountry"
+                  onChange={(e) => handleSelect(e)}
+                  className="form-control"
+                >
+                  <option value="Countries" disabled={true}>
+                    Select a Country
+                  </option>
+                  {countries.map((e) => {
+                    return (
+                      <option value={e.id} key={e.id}>
+                        {e.name}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+              {input.idCountry.length === 0 ? (
+                <h4 className={form.errorsColor}>
+                  {erroresFormulario.idCountry}
+                </h4>
+              ) : (
+                false
+              )}
+            </div>
+            {/* ---------------------- */}
+            <div className="text-center">
+              <button
+                className="btn btn-info"
+                disabled={
+                  Object.keys(erroresFormulario).length === 0
+                    ? false
+                    : true && form.btnColorAct
+                }
+              >
+                Send
+              </button>
+            </div>
+          </form>
+        </div>
+        <div>
+          {input.idCountry.length > 0 ? (
+            <>
+              <h1>Selected Countries: </h1>
+              <div>
+                <h4> {input?.idCountry.map((e) => e + " ,")}</h4>
+              </div>
+            </>
+          ) : null}
+        </div>
       </div>
     </div>
   );

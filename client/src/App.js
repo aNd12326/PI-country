@@ -1,5 +1,4 @@
 import { Route, Switch } from "react-router-dom";
-import "./App.css";
 import CountryDetails from "./components/countryDetails";
 import Formulario from "./views/formulario";
 import Home from "./views/home";
