@@ -118,7 +118,7 @@ const Form = () => {
         <div className="card-body d-flex justify-content-center bg-white">
           <form onSubmit={handleOnSubmit} className="p-3">
             <div className="mb-3 row">
-              <label className="col-sm-2 col-form-label text-center ">
+              <label className="col-sm-2 col-form-label text-center">
                 Name:{" "}
               </label>
               <div className="col-sm-10">
@@ -132,7 +132,9 @@ const Form = () => {
                 />
               </div>
               {erroresFormulario.name ? (
-                <h4 className={form.errorsColor}>{erroresFormulario.name}</h4>
+                <span className="text-danger text-center">
+                  {erroresFormulario.name}
+                </span>
               ) : (
                 false
               )}
@@ -160,9 +162,9 @@ const Form = () => {
                 </select>
               </div>
               {erroresFormulario.difficulty ? (
-                <h4 className={form.errorsColor}>
+                <span className="text-danger text-center">
                   {erroresFormulario.difficulty}
-                </h4>
+                </span>
               ) : (
                 false
               )}
@@ -183,9 +185,9 @@ const Form = () => {
                 />
               </div>
               {erroresFormulario.duration ? (
-                <h4 className={form.errorsColor}>
+                <span className="text-danger text-center">
                   {erroresFormulario.duration}
-                </h4>
+                </span>
               ) : (
                 false
               )}
@@ -213,7 +215,9 @@ const Form = () => {
               </div>
 
               {erroresFormulario.season ? (
-                <h4 className={form.errorsColor}>{erroresFormulario.season}</h4>
+                <span className="text-danger text-center">
+                  {erroresFormulario.season}
+                </span>
               ) : (
                 false
               )}
@@ -243,9 +247,9 @@ const Form = () => {
                 </select>
               </div>
               {input.idCountry.length === 0 ? (
-                <h4 className={form.errorsColor}>
+                <span className="text-danger text-center">
                   {erroresFormulario.idCountry}
-                </h4>
+                </span>
               ) : (
                 false
               )}

@@ -25,7 +25,6 @@ const Country = () => {
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
 
-  console.log(currentCountries);
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
   };

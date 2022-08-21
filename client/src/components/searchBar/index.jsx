@@ -24,7 +24,7 @@ const SearchBar = () => {
         placeholder="Search Country..."
         onChange={handleOnChange}
       />
-      <button className="btn btn-outline-success">Search</button>
+      <button className="btn btn-success">Search</button>
     </form>
   );
 };

@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import card from "./Card.module.css";
 
 const CountryCard = ({ name, image, continent, id }) => {
   return (

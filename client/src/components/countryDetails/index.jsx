@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getDetailsCountry } from "../../store/actions";
 import Navbar from "../navbar";
-import detailsCss from "./Details.module.css";
 
 const CountryDetails = () => {
   const { id } = useParams();
@@ -13,79 +12,116 @@ const CountryDetails = () => {
   useEffect(() => {
     dispatch(getDetailsCountry(id));
   }, [dispatch, id]);
-  console.log(countryDetails);
 
   return (
     <>
       <Navbar />
       {countryDetails.map((e) => {
         return (
-          <div key={e.id} className={detailsCss.containerDetails}>
-            <div className={detailsCss.titleContainer}>
-              <h1>
-                Country: <small>{e.name}</small>
-              </h1>
-            </div>
-            <div className={detailsCss.codeContainer}>
-              <h2>Code: </h2>
-              <h2 className={detailsCss.alignCode}>"{e.id}"</h2>
-            </div>
-            <div className={detailsCss.continentContainer}>
-              <h3>Continent: </h3>
-              <h3>{e.continent}</h3>
-            </div>
-            <>
-              {e.capital === "NaN" ? null : (
-                <div className={detailsCss.capitalContainer}>
-                  <h3>Capital: </h3>
-                  <h3>{e.capital}</h3>
+          <div className="container-sm text-center p-5" key={e.id}>
+            <div className="row p-2 card">
+              <h1 className="py-3 card-header bg-black text-white">Details</h1>
+              <div className="col card-body">
+                <div>
+                  <h5>
+                    <span className="fw-bold">Country:</span> {e.name}
+                  </h5>
                 </div>
-              )}
-            </>
-            <>
-              {e.subRegion === "NaN" ? null : (
-                <div className={detailsCss.subRegionContainer}>
-                  <h3>SubRegion:</h3>
-                  <h3>{e.subRegion}</h3>
+                <div>
+                  <h5 className="font-monospace">
+                    <span className="fw-bold">Code: </span> "{e.id}"
+                  </h5>
                 </div>
-              )}
-            </>
-            <div className={detailsCss.areaContainer}>
-              <h3>Area: </h3>
-              <h3>{e.area} km2</h3>
-            </div>
-            <div className={detailsCss.populationContainer}>
-              <h3>Population: </h3>
-              <h3>{e.population}</h3>
-            </div>
-            <div className={detailsCss.imageContainer}>
-              <img src={e.image} width={100} alt="img" />
-            </div>
-            <div className={detailsCss.titleActivity}>
-              <h1>Activities</h1>
-            </div>
-            {e.activities.length ? (
-              <>
-                {e.activities.map((e) => {
-                  return (
-                    <div key={e.id} className={detailsCss.containerActivity}>
-                      <h3>Name: {e.name}</h3>
-                      <h3>Difficulty: {e.difficulty}</h3>
-                      <h3>Duration: {e.duration}</h3>
-                      <h3>Season: {e.season}</h3>
+                <div>
+                  <h5 className="font-monospace">
+                    <span className="fw-bold">Continent: </span> {e.continent}
+                  </h5>
+                </div>
+                <>
+                  {e.capital === "NaN" ? null : (
+                    <div>
+                      <h5 className="font-monospace">
+                        <span className="fw-bold">Capital: </span>
+                        {e.capital}
+                      </h5>
                     </div>
-                  );
-                })}
-              </>
-            ) : null}
+                  )}
+                </>
+                <>
+                  {e.subRegion === "NaN" ? null : (
+                    <div>
+                      <h5 className="font-monospace">
+                        <span className="fw-bold">Subregion: </span>{" "}
+                        {e.subRegion}
+                      </h5>
+                    </div>
+                  )}
+                </>
+                <div>
+                  <h5 className="font-monospace">
+                    <span className="fw-bold">Area: </span> {e.area} km2
+                  </h5>
+                </div>
+                <div>
+                  <h5 className="font-monospace">
+                    <span className="fw-bold">Population: </span> {e.population}
+                  </h5>
+                </div>
+              </div>
+              <div className="col">
+                <h1 className="fw-bold py-3 card-header bg-black text-white">
+                  Activities
+                </h1>
+                {e.activities.length ? (
+                  <>
+                    {e.activities.map((e) => {
+                      return (
+                        <div key={e.id} className="p-2">
+                          <div>
+                            <h5 className="font-monospace">
+                              <span className="fw-bold">Name:</span> {e.name}
+                            </h5>
+                          </div>
+                          <div className="py-2">
+                            <h5 className="font-monospace">
+                              <span className="fw-bold">Difficulty:</span>{" "}
+                              {e.difficulty}
+                            </h5>
+                          </div>
+                          <div className="py-2">
+                            <h5 className="font-monospace">
+                              <span className="fw-bold"> Duration:</span>{" "}
+                              {e.duration}
+                            </h5>
+                          </div>
+                          <div className="py-2">
+                            <h5 className="font-monospace">
+                              <span className="fw-bold">Season: </span>{" "}
+                              {e.season}
+                            </h5>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </>
+                ) : null}
+              </div>
+              <div className="p-2">
+                <img src={e.image} width={100} alt="img" />
+              </div>
+            </div>
+            <div>
+              <Link to="/home">
+                <div className="p-2">
+                  <button type="button" className="btn btn-info">
+                    Go Back
+                  </button>
+                </div>
+              </Link>
+            </div>
           </div>
         );
       })}
-      <div className={detailsCss.btnDetails}>
-        <Link to="/home">
-          <button className={detailsCss.btnDet}>Go Back</button>
-        </Link>
-      </div>
     </>
   );
 };
