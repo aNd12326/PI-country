@@ -49,7 +49,7 @@ code {
   color: black;
 }
 
-.loadingCss{
+/* .loadingCss{
   background-color: aqua;
   border-radius: 80px;
   display: flex;
@@ -59,9 +59,9 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
-.titleFirst{
+.titleFirst {
   margin-top: 100px;
   font-size: 50px;
   text-decoration: overline;
